@@ -1,1 +1,9 @@
 # bamazon-fuad-guluzade
+
+Online store simulation app.
+Consists 3 different files.
+1) bamazonCustomer.js - simulates customer view. Once runned, shows table of goods with info that customer needs, (![table](./images/c1.png)) and ask the customer id of product to buy and quantity of that product. If requested quantity is higher that in stock (as shown in following screenshot ![user request failed example](./images/c2.png)), program informs user, otherwise, user gets message about successfull purchase, updated table shown and user gets another prompt for purchasing item ([user request success example](./images/c3.png)).
+
+2) bamazonManager.js - simulates manager view. Once runned, gives the choices of actions ([manager choices](./images/m1.png)). View Products for Sale - shows all the items available ([show inventory](./images/m2.png)). View Low Inventory - Show items with stock_quantity < 200. ([Low Inventory](/images/m3.png)). Add to Inventory - Fullfills selected item by count provided ([add to inventory](/images/m4.png)). Add New Product - Allows manager to add new item to product list ([Add new product](/images/m5.png)).
+
+3) bamazonSupervisor.js - simulates supervisor view. Once runned, gives the choices of actions ([supervisor choices](/images/s1.png)). View Product Sales by Department - View total list of departments with overhead costs and total product sales combined by each department ([supervisor table](/images/s2.png)). Create New Department - adds new department to departments list ([add new department](/images/s3.png)). ([New department](/images/s4.png)). New department will not show in supervisor's table until manager adds product to it. 

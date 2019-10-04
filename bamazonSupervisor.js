@@ -11,11 +11,13 @@ const connection = mysql.createConnection({
 
 const viewProductSales = () => {
     var query = 'SELECT departments.department_id, departments.department_name, departments.over_head_costs, ';
-    query += 'products.product_sales, (products.product_sales - departments.over_head_costs) as total_profit FROM departments INNER JOIN products ';
-    query += 'ON products.department_name = departments.department_name';
+    query += 'SUM(products.product_sales) as product_sales, (SUM(products.product_sales) - departments.over_head_costs) as total_profit ';
+    query += 'FROM departments INNER JOIN products ';
+    query += 'ON products.department_name = departments.department_name GROUP BY products.department_name';
     connection.query(query, (err, results) => {
         if (err) throw err;
         console.table(results);
+        start();
     });
 }
 
@@ -36,7 +38,8 @@ const createNewDepartment = () => {
         connection.query(query, [responses.name, responses.overhead], 
             (err, result) => {
                 if(err) throw err;
-                console.log(result);
+                console.log(`${responses.name} was added to department list`);
+                start();
             })
     });
 }

@@ -24,3 +24,39 @@ VALUES('Laptop', 'electronics', 1500, 50),
         ('Apples', 'grocery', 3, 1000),
         ('Pilates', 'fitness', 25, 130),
         ('Balexa', 'electronics', 120, 90);
+
+        CREATE TABLE departments (
+  department_id INT NOT NULL AUTO_INCREMENT,
+  department_name VARCHAR(45) NOT NULL,
+  over_head_costs VARCHAR(100) NOT NULL,
+  PRIMARY KEY (department_id)
+);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES('electronics', 5500),
+        ('kitchenware', 1000),
+        ('menswear', 1500),
+        ('bedroom', 3000),
+        ('womanwear', 5000),
+        ('shoes', 500),
+        ('baby', 800),
+        ('grocery', 300),
+        ('fitness', 2500);
+
+        CREATE TABLE departments (
+  department_id INT NOT NULL AUTO_INCREMENT,
+  department_name VARCHAR(45) NOT NULL,
+  over_head_costs VARCHAR(100) NOT NULL,
+  PRIMARY KEY (department_id)
+);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES('electronics', 5500),
+        ('kitchenware', 1000),
+        ('menswear', 1500),
+        ('bedroom', 3000),
+        ('womanwear', 5000),
+        ('shoes', 500),
+        ('baby', 800),
+        ('grocery', 300),
+        ('fitness', 2500);

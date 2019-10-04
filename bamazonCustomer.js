@@ -9,18 +9,23 @@ const connection = mysql.createConnection({
     database: 'bamazonDB'
 });
 
+connection.connect(function (err) {
+    if (err) throw err;
+    start();
+});
+
 const showGoods = function () {
-    connection.connect(function (err) {
-        if (err) throw err;
-        connection.query("SELECT * FROM products", function (err, result) {
-            if (err) throw err;
-            console.table(result);
+    return new Promise(function (resolve, reject) {
+        connection.query("SELECT item_id,product_name,price,stock_quantity FROM products", function (err, result) {
+            if (err) throw err
+            resolve(result);
         });
-    });
+    })
 }
 
-
-const start = function () {
+const start = async function () {
+    var result = await showGoods();
+    console.table(result);
     inquirer.prompt([
         {
             name: 'id',
@@ -37,7 +42,7 @@ const start = function () {
             if (err) throw err;
             if (results[0].stock_quantity < answers.count) {
                 console.log('Insufficent quantity!');
-                start();
+
             } else {
                 connection.query('UPDATE products SET ? WHERE ?',
                     [
@@ -55,9 +60,12 @@ const start = function () {
                         console.log(`The total cost of your purchase is $${results[0].price * answers.count}`);
                     });
             };
+            start();
         });
 
-    })
+    });
 }
-showGoods();
-start();
+
+
+
+
